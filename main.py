@@ -44,12 +44,18 @@ keyboard.extensions.append(MediaKeys())
 
 
 keyboard.keymap = [[
-    KC.A,    KC.B,    KC.C,    KC.D,    KC.E,
-    KC.F,    KC.G,    KC.H,    KC.I,    KC.J,
-    KC.K,    KC.L,    KC.M,    KC.N,    KC.O,
-    KC.P,    KC.Q,    KC.R,    KC.S,    KC.T,
+    KC.P7,   KC.P8,   KC.P9,   KC.PSLS, KC.NLCK,
+    KC.P4,   KC.P5,   KC.P6,   KC.PAST, KC.LCTL(KC.C),
+    KC.P1,   KC.P2,   KC.P3,   KC.PMNS, KC.BSPC,
+    KC.MO(1),KC.P0,   KC.PDOT, KC.PPLS, KC.PENT,
     KC.MUTE, KC.VOLU, KC.VOLD,
-    ],]
+    ],[
+    KC.P7,   KC.P8,   KC.P9,   KC.PSLS, KC.NLCK,
+    KC.P4,   KC.P5,   KC.P6,   KC.PAST, KC.LCTL(KC.V),
+    KC.P1,   KC.P2,   KC.P3,   KC.PMNS, KC.DEL,
+    KC.TRNS,KC.P0,   KC.PDOT, KC.PPLS, KC.PEQL,
+    KC.MUTE, KC.BRIU, KC.BRID,
+    ]]
 
 if __name__ == '__main__':
     #keyboard.debug_enabled = True
