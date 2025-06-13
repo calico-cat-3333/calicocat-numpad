@@ -53,7 +53,7 @@ keyboard.keymap = [[
     KC.P7,   KC.P8,   KC.P9,   KC.PSLS, KC.NLCK,
     KC.P4,   KC.P5,   KC.P6,   KC.PAST, KC.LCTL(KC.V),
     KC.P1,   KC.P2,   KC.P3,   KC.PMNS, KC.DEL,
-    KC.TRNS,KC.P0,   KC.PDOT, KC.PPLS, KC.PEQL,
+    KC.TRNS, KC.P0,   KC.PDOT, KC.PPLS, KC.PEQL,
     KC.MUTE, KC.BRIU, KC.BRID,
     ]]
 
