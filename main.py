@@ -7,6 +7,8 @@ print("Starting")
 # microcontroller.cpu.frequency = 150000000
 # # microcontroller.cpu.frequency = 180000000
 
+# 参考资料：https://github.com/KMKfw/kmk_firmware/tree/main/docs/en
+
 import board
 import os
 
@@ -15,6 +17,7 @@ from kmk.keys import KC
 
 from kmk.modules.layers import Layers
 from kmk.modules.mouse_keys import MouseKeys
+from kmk.modules.macros import Macros, Delay, Tap, Press, Release
 from kmk.extensions.RGB import RGB, AnimationModes
 from kmk.extensions.media_keys import MediaKeys
 
@@ -38,23 +41,45 @@ rgb = RGB(
 
 keyboard.modules.append(Layers())
 keyboard.modules.append(MouseKeys())
+keyboard.modules.append(Macros())
 
 keyboard.extensions.append(rgb)
 keyboard.extensions.append(MediaKeys())
 
+# Macros
+VIM_WQ = KC.MACRO(Tap(KC.ESC), ':wq', Tap(KC.ENTER))
+VIM_Q = KC.MACRO(Tap(KC.ESC), ':q', Tap(KC.ENTER))
+VIM_QF = KC.MACRO(Tap(KC.ESC), ':q!', Tap(KC.ENTER))
+VIM_CP = KC.MACRO(Tap(KC.ESC), 'yy')
+VIM_CUT = KC.MACRO(Tap(KC.ESC), 'dd')
+VIM_PU = KC.MACRO(Tap(KC.ESC), 'P')
+VIM_PD = KC.MACRO(Tap(KC.ESC), 'p')
+VIM_UNDO = KC.MACRO(Tap(KC.ESC), 'u')
+VIM_REDO = KC.MACRO(Tap(KC.ESC), Press(KC.LCTL), Tap(KC.R), Release(KC.LCTL))
+VIM_PGU = KC.MACRO(Tap(KC.ESC), Press(KC.LCTL), Tap(KC.B), Release(KC.LCTL))
+VIM_PGD = KC.MACRO(Tap(KC.ESC), Press(KC.LCTL), Tap(KC.F), Release(KC.LCTL))
+VIM_FTOP = KC.MACRO(Tap(KC.ESC), 'gg')
+VIM_FEND = KC.MACRO(Tap(KC.ESC), 'G')
 
+# Keymap
 keyboard.keymap = [[
     KC.P7,   KC.P8,   KC.P9,   KC.PSLS, KC.NLCK,
     KC.P4,   KC.P5,   KC.P6,   KC.PAST, KC.LCTL(KC.C),
     KC.P1,   KC.P2,   KC.P3,   KC.PMNS, KC.BSPC,
     KC.MO(1),KC.P0,   KC.PDOT, KC.PPLS, KC.PENT,
-    KC.MUTE, KC.VOLU, KC.VOLD,
+    KC.TG(2), KC.VOLU, KC.VOLD,
     ],[
     KC.P7,   KC.P8,   KC.P9,   KC.PSLS, KC.NLCK,
     KC.P4,   KC.P5,   KC.P6,   KC.PAST, KC.LCTL(KC.V),
     KC.P1,   KC.P2,   KC.P3,   KC.PMNS, KC.DEL,
     KC.TRNS, KC.P0,   KC.PDOT, KC.PPLS, KC.PEQL,
     KC.MUTE, KC.BRIU, KC.BRID,
+    ],[
+    VIM_WQ,  VIM_Q,   VIM_QF,  VIM_FTOP,KC.BSPC,
+    VIM_UNDO,VIM_REDO,VIM_PGU, VIM_FEND,KC.DEL,
+    VIM_PU,  VIM_PD,  VIM_PGD, KC.K,    KC.ENTER,
+    VIM_CP,  VIM_CUT, KC.H,    KC.J,    KC.L,
+    KC.TG(2), KC.BRIU, KC.BRID,
     ]]
 
 if __name__ == '__main__':
