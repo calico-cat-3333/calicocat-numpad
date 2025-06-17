@@ -29,10 +29,11 @@ keyboard = KMKKeyboard()
 #     refresh_rate = 15
 
 class LayerRGB(RGB):
-    def __init__(self, reserve_indexs=[0], *kargs, **kwargs):
+    # RGB with reserved pixels for showing layer status
+    def __init__(self, reserved_pixels=[0], *kargs, **kwargs):
         super().__init__(*kargs, **kwargs)
         self.current_layre = 0
-        self.reserve_indexs = reserve_indexs
+        self.reserved_pixels = reserved_pixels
 
     def after_matrix_scan(self, sandbox):
         super().after_matrix_scan(sandbox)
@@ -41,7 +42,7 @@ class LayerRGB(RGB):
         self._do_update()
 
     def show(self):
-        for i in self.reserve_indexs:
+        for i in self.reserved_pixels:
             self.set_hsv((self.current_layre * 20) % 256, self.sat, self.val, i)
         super().show()
 
@@ -54,7 +55,7 @@ rgb = LayerRGB(
     animation_speed=4,
     animation_mode=AnimationModes.RAINBOW,
     refresh_rate=30,
-    reserve_indexs=[0, 1, 2, 3, 4]
+    reserved_pixels=[0, 1, 2, 3, 4]
 )
 
 keyboard.modules.append(Layers())
