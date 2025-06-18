@@ -14,6 +14,8 @@ boot.py 实现了默认禁用储存和串口，在插入键盘时按住左上角
 
 在开发板上安装 [circuitpython](https://circuitpython.org/)
 
+删除 circuitpython 自带的 code.py
+
 克隆 kmk 储存库，并将其中的 kmk 文件夹复制到 CIRCUITPY 储存器中。
 
 将 [neopixel 库](https://github.com/adafruit/Adafruit_CircuitPython_NeoPixel/blob/main/neopixel.py)复制到在 CIRCUITPY 的 lib 文件夹中。
