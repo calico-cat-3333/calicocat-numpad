@@ -4,6 +4,8 @@
 
 使用 [kmk](https://github.com/KMKfw/kmk_firmware) 固件。
 
+[硬件开源链接](https://oshwhub.com/calico-cat-3333/calicocat_numpad-v1)（打开提示不存在表明修改了但是还没审核完）
+
 disptest.py 是外扩屏幕用的测试代码，尚未完成。
 
 main.py 和 kb.py 是键盘的主要代码，可在 main.py 中修改键位布局。
